@@ -4,7 +4,6 @@
     <title>Venda de Produtos</title>
     <?php include('config.php'); ?>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="style\vende.css">
     <style>
         body {
             font-family: Arial, sans-serif;
