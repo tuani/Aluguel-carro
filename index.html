@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="./cliente.php"> cliente</a>
+    <a href="./veiculo.php"> veiculo</a>
+    <a href="./aluga.php"> aluga</a>
+    <a href="./veiculolst.php"> relatorio aluguel</a>
+
+
+</body>
+</html>
+
+<!--
+CREATE TABLE cliente (
+    codigo INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255));
+    
+CREATE TABLE veiculo (
+    placa INT AUTO_INCREMENT PRIMARY KEY,
+    modelo VARCHAR(255),
+    quantidade INT);
+    
+CREATE TABLE aluga (
+    data DATE,
+    placa INT, 
+    codigo INT,
+    FOREIGN KEY(placa) REFERENCES veiculo(placa),
+    FOREIGN KEY(codigo) REFERENCES cliente(codigo));
+-->
+
+
+
+
+
