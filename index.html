@@ -137,6 +137,30 @@
             </div>
         </div>
     </div>
+<!--
 
+CREATE TABLE cliente (
+    `codigo` int(11) NOT NULL AUTO_INCREMENT,
+    `nome` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`codigo`)
+  )
+
+CREATE TABLE
+  `veiculo` (
+    `placa` int(11) NOT NULL AUTO_INCREMENT,
+    `modelo` varchar(255) DEFAULT NULL,
+    `quantidade` int(11) DEFAULT NULL,
+    PRIMARY KEY (`placa`)
+  )
+
+CREATE TABLE aluga (
+  `data` DATE,
+  `placa` INT(11),
+  `codigo` INT(11),
+  FOREIGN KEY (`placa`) REFERENCES `veiculo` (`placa`),
+  FOREIGN KEY (`codigo`) REFERENCES `cliente` (`codigo`)
+)
+
+-->
 </body>
 </html>
