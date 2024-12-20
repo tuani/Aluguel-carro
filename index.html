@@ -4,21 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Dashboard</title>
     <style>
         body {
+            background-color: #EAEAEA;
             color: #333;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #000000;
             padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .card-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            max-width: 1100px;
-            margin: 0 auto;
+            justify-content: space-around;
+            padding: 20px;
         }
 
         .card {
@@ -26,103 +35,108 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 10px;
-            display: flex;
-            flex-direction: column;
             transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .card-content {
-            padding: 20px;
+            padding: 30px;
             text-align: center;
             border-radius: 10px;
+            color: white;
+            transition: background-color 0.3s;
         }
 
         .card-content h2 {
             margin: 0 0 15px 0;
-            font-size: 18px;
-            color: white;
+            font-size: 22px;
         }
 
         .card-content a {
             display: inline-block;
-            padding: 10px 30px;
-            color: #ffffff;
+            padding: 12px 30px;
+            color: #2C3E50;
+            background-color: rgba(255, 255, 255, 0.8); 
             text-decoration: none;
             border-radius: 5px;
+            font-size: 16px;
             transition: background-color 0.3s, transform 0.3s;
         }
 
         .card-content a:hover {
-            background-color: rgb(11, 45, 78);
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: scale(1.05);
         }
 
         .card-content.bg-blue-1 {
-            background-color: #6d94c2;
+            background-color: #BDC3C7;
         }
 
         .card-content.bg-blue-2 {
-            background-color: #6d94c2;
+            background-color: #8d97a0; 
         }
 
         .card-content.bg-blue-3 {
-            background-color: #164b6c;
+            background-color: #647281;
         }
 
         @media (max-width: 768px) {
             .card {
-                width: 90%;
+                width: calc(50% - 20px);
             }
         }
 
-        @media (max-width: 1100px) {
+        @media (max-width: 500px) {
             .card {
-                width: calc(50% - 20px);
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="card-container">
-    <div class="card">
-        <div class="card-content bg-blue-1">
-            <h2>Cadastro de Cliente</h2>
-            <a href="./cliente.php">Cadastrar</a>
+    <div class="header">
+        Sistema de Gestão de Veículos
+    </div>
+
+    <div class="card-container">
+        <div class="card">
+            <div class="card-content bg-blue-1">
+                <h2>Cadastro de Cliente</h2>
+                <a href="./cliente.php">Cadastrar</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content bg-blue-1">
+                <h2>Cadastro de Veículo</h2>
+                <a href="./veiculo.php">Cadastrar</a>
+            </div>
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-content bg-blue-1">
-            <h2>Cadastro de Veículo</h2>
-            <a href="./veiculo.php">Cadastrar</a>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-content bg-blue-2">
+                <h2>Registro de Aluguel</h2>
+                <a href="./aluga.php">Registrar</a>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="card-container">
-    <div class="card">
-        <div class="card-content bg-blue-2">
-            <h2>Registro de Aluguel</h2>
-            <a href="./aluga.php">Registrar</a>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-content bg-blue-3">
+                <h2>Relatório de Aluguel</h2>
+                <a href="./veiculolst.php">Gerar relatório</a>
+            </div>
         </div>
     </div>
-</div>
-
-<br><br><br><br>
-
-<div class="card-container">
-    <div class="card">
-        <div class="card-content bg-blue-3">
-            <h2>Relatório de Aluguel</h2>
-            <a href="./veiculolst.php">Gerar relatório</a>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>
