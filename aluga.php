@@ -83,6 +83,11 @@
         a:hover {
             text-decoration: underline;
         }
+        .info-message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -95,11 +100,13 @@
             </div>
             <div class="input-group">
                 <label for="codigo">Código Cliente:</label>
-                <input type="number" name="codigo" id="codigo">
+                <input type="number" name="codigo" id="codigo" oninput="mostrarCliente()">
+                <div id="clienteInfo" class="info-message"></div>
             </div>
             <div class="input-group">
-                <label for="placa">Código veiculo:</label>
-                <input type="number" name="placa" id="placa">
+                <label for="placa">Código veículo:</label>
+                <input type="number" name="placa" id="placa" oninput="mostrarVeiculo()">
+                <div id="veiculoInfo" class="info-message"></div>
             </div>
             <div class="input-group">
                 <input type="submit" value="Gravar" name="botao">
@@ -127,13 +134,13 @@
                     if (mysqli_query($mysqli, $query_update)) {
                         $insere = "INSERT INTO aluga (data, codigo, placa) VALUES ('$data', '$codigo', '$placa')";
                         if (mysqli_query($mysqli, $insere)) {
-                            echo "<div class='message success'>Veiculo alugado com sucesso!</div>";
+                            echo "<div class='message success'>Veículo alugado com sucesso!</div>";
                         } else {
                             echo "<div class='message error'>Erro ao registrar o aluguel: " . mysqli_error($mysqli) . "</div>";
                         }
                     } 
                 } else {
-                    echo "<div class='message error'>Não há estoque suficiente para esta aluguel.</div>";
+                    echo "<div class='message error'>Não há estoque suficiente para este aluguel.</div>";
                 }
             } else {
                 echo "<div class='message error'>Produto não encontrado.</div>";
@@ -141,5 +148,51 @@
         }
         ?>
     </div>
+
+    <script>
+        function mostrarCliente() {
+            var codigo = document.getElementById("codigo").value;
+            var clienteInfo = document.getElementById("clienteInfo");
+
+            if (codigo) {
+                fetch('buscar_cliente.php?id=' + codigo)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.nome) {
+                            clienteInfo.textContent = "Cliente: " + data.nome;
+                        } else {
+                            clienteInfo.textContent = "Cliente não encontrado.";
+                        }
+                    })
+                    .catch(error => {
+                        clienteInfo.textContent = "Erro ao buscar cliente.";
+                    });
+            } else {
+                clienteInfo.textContent = "";
+            }
+        }
+
+        function mostrarVeiculo() {
+            var placa = document.getElementById("placa").value;
+            var veiculoInfo = document.getElementById("veiculoInfo");
+
+            if (placa) {
+                fetch('buscar_veiculo.php?id=' + placa)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.modelo) {
+                            veiculoInfo.textContent = "Veículo: " + data.modelo;
+                        } else {
+                            veiculoInfo.textContent = "Veículo não encontrado.";
+                        }
+                    })
+                    .catch(error => {
+                        veiculoInfo.textContent = "Erro ao buscar veículo.";
+                    });
+            } else {
+                veiculoInfo.textContent = "";
+            }
+        }
+    </script>
 </body>
 </html>
